@@ -60,6 +60,70 @@
             100% { background-position: 0% 50%; }
         }
         
+        /* Welcome overlay animation */
+        .welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            color: white;
+            animation: welcomeFadeOut 1s ease-out 3s forwards;
+        }
+        
+        .welcome-text {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: welcomeSlideIn 0.8s ease-out 0.3s forwards;
+        }
+        
+        .welcome-name {
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(45deg, #fff, #f0f8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            animation: welcomeSlideIn 0.8s ease-out 0.8s forwards;
+            text-align: center;
+        }
+        
+        .welcome-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            opacity: 0.9;
+            opacity: 0;
+            animation: welcomeSlideIn 0.8s ease-out 1.3s forwards;
+            margin-top: 20px;
+        }
+        
+        @keyframes welcomeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes welcomeFadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+        
         /* Loading animation */
         .loading-overlay {
             position: fixed;
@@ -72,7 +136,7 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            animation: fadeOut 0.5s ease-out 2s forwards;
+            animation: fadeOut 0.5s ease-out 4s forwards;
         }
         
         .loading-spinner {
@@ -100,7 +164,7 @@
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            animation: slideInUp 0.8s ease-out 2.5s both;
+            animation: slideInUp 0.8s ease-out 4.5s both;
         }
         
         @keyframes slideInUp {
@@ -181,14 +245,14 @@
             font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 800;
             margin-bottom: 10px;
-            animation: fadeInScale 1s ease-out 3s both;
+            animation: fadeInScale 1s ease-out 5s both;
         }
         
         .title {
             font-size: clamp(1rem, 3vw, 1.5rem);
             opacity: 0.9;
             font-weight: 400;
-            animation: fadeInScale 1s ease-out 3.2s both;
+            animation: fadeInScale 1s ease-out 5.2s both;
         }
         
         @keyframes fadeInScale {
@@ -254,7 +318,7 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 10px;
-            animation: countUp 2s ease-out 3.5s both;
+            animation: countUp 2s ease-out 5.5s both;
         }
         
         .stat-label {
@@ -275,10 +339,10 @@
             animation: fadeInUp 0.8s ease-out both;
         }
         
-        .section:nth-child(1) { animation-delay: 4s; }
-        .section:nth-child(2) { animation-delay: 4.2s; }
-        .section:nth-child(3) { animation-delay: 4.4s; }
-        .section:nth-child(4) { animation-delay: 4.6s; }
+        .section:nth-child(1) { animation-delay: 6s; }
+        .section:nth-child(2) { animation-delay: 6.2s; }
+        .section:nth-child(3) { animation-delay: 6.4s; }
+        .section:nth-child(4) { animation-delay: 6.6s; }
         
         @keyframes fadeInUp {
             from {
@@ -540,6 +604,18 @@
                 right: 20px;
                 padding: 12px 16px;
             }
+            
+            .welcome-text {
+                font-size: 1.8rem;
+            }
+            
+            .welcome-name {
+                font-size: 2.5rem;
+            }
+            
+            .welcome-subtitle {
+                font-size: 1.2rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -568,6 +644,10 @@
             .section-title {
                 font-size: 1.5rem;
             }
+            
+            .welcome-name {
+                font-size: 2rem;
+            }
         }
         
         /* Print Styles */
@@ -579,6 +659,7 @@
             
             .animated-bg,
             .loading-overlay,
+            .welcome-overlay,
             .print-button {
                 display: none !important;
             }
@@ -641,6 +722,12 @@
 <body>
     <div class="animated-bg"></div>
     
+    <div class="welcome-overlay">
+        <div class="welcome-text">Welcome to the Portfolio of</div>
+        <div class="welcome-name">Patel Brij Bipinbhai</div>
+        <div class="welcome-subtitle">Software Engineer & IT Professional</div>
+    </div>
+    
     <div class="loading-overlay">
         <div class="loading-spinner"></div>
     </div>
@@ -658,7 +745,7 @@
                         <i class="fas fa-user"></i>
                     </div>
                     <h1 class="name">Patel Brij Bipinbhai</h1>
-                    <p class="title">IT Professional & Software Developer</p>
+                    <p class="title">Software Engineer & IT Professional</p>
                 </div>
             </div>
             
@@ -746,11 +833,15 @@
                         <div class="info-card">
                             <div class="info-item">
                                 <span class="info-label">Mother's Name</span>
-                                <span class="info-value">Patel Chetana Bipinbhai</span>
+                                <span class="info-value">Patel Chetanaben Bipinbhai</span>
                             </div>
                             <div class="info-item">
                                 <span class="info-label">Mother's Occupation</span>
                                 <span class="info-value">Housewife</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Siblings</span>
+                                <span class="info-value">1 Sister (Unmarried)</span>
                             </div>
                         </div>
                     </div>
@@ -767,25 +858,29 @@
                         <div class="info-card">
                             <div class="info-item">
                                 <span class="info-label">Education</span>
-                                <span class="info-value">B.Tech in Information Technology</span>
+                                <span class="info-value">B.Tech (IT), DDU</span>
                             </div>
                             <div class="info-item">
                                 <span class="info-label">Current Position</span>
-                                <span class="info-value">Software Developer</span>
+                                <span class="info-value">Software Engineer</span>
                             </div>
                             <div class="info-item">
-                                <span class="info-label">Annual Income</span>
-                                <span class="info-value highlight">7.2 LPA</span>
+                                <span class="info-label">Company</span>
+                                <span class="info-value">M&M Software, Vadodara</span>
                             </div>
                         </div>
                         <div class="info-card">
                             <div class="info-item">
-                                <span class="info-label">Skills</span>
-                                <span class="info-value">Full Stack Development</span>
+                                <span class="info-label">Annual Income</span>
+                                <span class="info-value highlight">7.2 LPA</span>
                             </div>
                             <div class="info-item">
-                                <span class="info-label">Location</span>
-                                <span class="info-value">Gujarat, India</span>
+                                <span class="info-label">Work Location</span>
+                                <span class="info-value">Vadodara, Gujarat</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Field</span>
+                                <span class="info-value">Information Technology</span>
                             </div>
                         </div>
                     </div>
@@ -802,99 +897,20 @@
                         <div class="contact-item">
                             <i class="fas fa-phone contact-icon"></i>
                             <div class="contact-info">
-                                <div class="contact-label">Phone</div>
+                                <div class="contact-label">Primary Phone</div>
                                 <div class="contact-value">+91 9328016948</div>
                             </div>
                         </div>
                         <div class="contact-item">
-                            <i class="fas fa-envelope contact-icon"></i>
+                            <i class="fas fa-phone-alt contact-icon"></i>
                             <div class="contact-info">
-                                <div class="contact-label">Email</div>
-                                <div class="contact-value">brijpatidar2003@gmail.com</div>
+                                <div class="contact-label">Secondary Phone</div>
+                                <div class="contact-value">+91 9428757179</div>
                             </div>
                         </div>
                         <div class="contact-item">
                             <i class="fas fa-map-marker-alt contact-icon"></i>
                             <div class="contact-info">
                                 <div class="contact-label">Address</div>
-                                <div class="contact-value">Modhera, Gujarat</div>
+                                <div class="contact-value">Modhera, Mehsana, Gujarat</div>
                             </div>
-                        </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <script>
-        // Animate numbers counting up
-        function animateNumbers() {
-            const numbers = document.querySelectorAll('.stat-number');
-            numbers.forEach(number => {
-                const text = number.textContent;
-                if (!isNaN(text)) {
-                    const target = parseInt(text);
-                    let current = 0;
-                    const increment = target / 50;
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= target) {
-                            current = target;
-                            clearInterval(timer);
-                        }
-                        number.textContent = Math.floor(current);
-                    }, 50);
-                }
-            });
-        }
-        
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, observerOptions);
-        
-        // Start animations after page load
-        window.addEventListener('load', () => {
-            setTimeout(() => {
-                animateNumbers();
-                document.querySelectorAll('.section').forEach(section => {
-                    observer.observe(section);
-                });
-            }, 3500);
-        });
-        
-        // Add hover effects
-        document.querySelectorAll('.stat-card, .info-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-8px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-        
-        // Print functionality
-        document.querySelector('.print-button').addEventListener('click', () => {
-            window.print();
-        });
-        
-        // Add smooth scrolling for any anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-</body
